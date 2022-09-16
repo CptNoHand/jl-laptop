@@ -311,7 +311,7 @@ Config.Bennys.Items = {
         type = "bank",
         category = "Cosmetic Parts"
     },
-    ["paintcan",] = {
+    ["paintcan"] = {
         name = "paintcan",
         price = 1500,
         stock = 5,
