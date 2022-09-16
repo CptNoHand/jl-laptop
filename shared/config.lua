@@ -25,8 +25,8 @@ Config.Apps = {
     },
     ['bennys'] = {
         app = 'bennys',
-        name = "Bennys Shop",
-        icon = "fa-solid fa-shopping-cart",
+        name = 'Bennys Shop',
+        icon = 'fa-solid fa-shopping-cart',
         useimage = false,
         color = '#fff',
         background = "#352968",
