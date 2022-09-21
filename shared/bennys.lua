@@ -7,7 +7,7 @@ Config.Bennys.Location = {
     coords = vector4(1183.37, -3322.16, 6.03, 95.27),
     sprite = 473,
     colour = 28,
-    text = "Bennys Warehouse"
+    text = "Basti/s Werkstattbedarf"
 }
 
 
@@ -367,16 +367,44 @@ Config.Bennys.Items = {
         type = "bank",
         category = "Consumable Parts"
     },
-    ["rubber"] = {
+    --[[["rubber"] = {
         name = "rubber",
         price = 50,
         stock = 50,
         type = "bank",
         category = "Consumable Parts"
+    },]]--
+    ["sparkplug"] = {
+        name = "sparkplug",
+        price = 100,
+        stock = 10,
+        type = "bank",
+        category = "Consumable Parts"
     },
-    ["aluminum"] = {
-        name = "aluminum",
+    ["newoil"] = {
+        name = "newoil",
         price = 50,
+        stock = 50,
+        type = "bank",
+        category = "Consumable Parts"
+    },
+    ["carbattery"] = {
+        name = "carbattery",
+        price = 550,
+        stock = 50,
+        type = "bank",
+        category = "Consumable Parts"
+    },
+    ["axleparts"] = {
+        name = "axleparts",
+        price = 100,
+        stock = 50,
+        type = "bank",
+        category = "Consumable Parts"
+    },
+    ["sparetire"] = {
+        name = "sparetire",
+        price = 450,
         stock = 50,
         type = "bank",
         category = "Consumable Parts"
@@ -388,28 +416,4 @@ Config.Bennys.Items = {
         type = "bank",
         category = "Consumable Parts"
     },
-    --[[["carbattery"] = {
-        name = "carbattery",
-        price = 550,
-        stock = 50,
-        type = "bank",
-        slot = 51,
-        category = "Consumable Parts"
-    },
-    ["axleparts"] = {
-        name = "axleparts",
-        price = 400,
-        stock = 50,
-        type = "bank",
-        slot = 52,
-        category = "Consumable Parts"
-    },
-    ["sparetire"] = {
-        name = "sparetire",
-        price = 450,
-        stock = 50,
-        type = "bank",
-        slot = 53,
-        category = "Consumable Parts"
-    },]]--
 }

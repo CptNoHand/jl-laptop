@@ -25,12 +25,12 @@ Config.Apps = {
     },
     ['bennys'] = {
         app = 'bennys',
-        name = 'Bennys Shop',
+        name = 'Basti/s Werkstattbedarf',
         icon = 'fa-solid fa-shopping-cart',
         useimage = false,
         color = '#fff',
         background = "#352968",
-        job = {"ottos", "redline", "lscustoms"},
+        job = {'redline'},
         gang = {},
         item = {},
         default = true
