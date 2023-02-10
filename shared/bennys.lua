@@ -8,6 +8,7 @@ Config.Bennys.Location = {
     sprite = 473,
     colour = 28,
     text = "Basti/s Werkstattbedarf",
+    scenario = "WORLD_HUMAN_CLIPBOARD",
 }
 
 

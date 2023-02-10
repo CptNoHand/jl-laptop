@@ -2,15 +2,21 @@
   import moment from "moment";
   import { modals } from "@store/modals";
   import { flip } from "svelte/animate";
-  import { contracts, queue, started, startedContracts } from "@store/boosting";
+  import {
+    canCancel,
+    contracts,
+    queue,
+    startedContracts,
+  } from "@store/boosting";
   import { notifications } from "@store/notifications";
   import { fetchNui } from "@utils/eventHandler";
 
   import Apps from "@shared/Apps.svelte";
   import Progressbar from "@shared/Progressbar.svelte";
-  import { quadInOut } from "svelte/easing";
-  import { DumyBoostingData } from "@utils/initDumyData";
+  import { quadInOut, quadOut } from "svelte/easing";
   import { onMount } from "svelte";
+  import { currentDate } from "@utils/misc";
+  import { fade, scale } from "svelte/transition";
 
   let tierRing = {
     D: "rgb(77, 141, 77)",
@@ -22,7 +28,7 @@
     "S+": "rgb(255, 208, 0)",
   };
 
-  let iswaiting;
+  let iswaiting: boolean;
 
   let currentPage = "My Contracts";
   let topdata = {
@@ -51,8 +57,11 @@
     for (let i = 0; i < sorted.length; i++) {
       if (repPoint >= sorted[i][1]) {
         currentRep = sorted[i][0];
-        nextRep = sorted[i - 1][0];
-        progressPercentage = getGapPercentage(sorted[i - 1][1], sorted[i][1]);
+        nextRep = sorted[i - 1] ? sorted[i - 1][0] : "MAX";
+        progressPercentage = getGapPercentage(
+          sorted[i - 1] ? sorted[i - 1][1] : sorted[i][1] + 100,
+          sorted[i][1]
+        );
         break;
       }
     }
@@ -80,46 +89,10 @@
         if (res.status === "success") {
           $queue = !$queue;
         }
-
         notifications.send(res.message, "boosting", 5000);
       });
     }, 2000);
   }
-
-  fetchNui("boosting/getcontract")
-    .then((r) => {
-      contracts.set(r.contracts);
-    })
-    .catch((e) => {});
-
-  fetchNui("boosting/getqueue").then((data) => {
-    queue.set(data);
-  });
-
-  fetchNui("boosting/getrep")
-    .then((r) => {
-      let toarray: any = [];
-      for (let i in r.repconfig) {
-        toarray.push([i, r.repconfig[i]]);
-      }
-      repConfig = toarray;
-      repPoint = r.rep;
-      getRep();
-    })
-    .catch(() => {
-      repConfig = {
-        rep: 30,
-        repConfig: [
-          ["D", 0],
-          ["C", 50],
-          ["B", 100],
-          ["A", 150],
-          ["A+", 200],
-          ["S", 250],
-          ["S+", 300],
-        ],
-      };
-    });
 
   function startContract(id: number) {
     if ($startedContracts) return;
@@ -129,7 +102,11 @@
     })
       .then((res) => {
         if (res.status === "success") {
-          startedContracts.set(contract);
+          startedContracts.set({
+            ...contract,
+            plate: "",
+          });
+          canCancel.set(true);
         }
         notifications.send(res.message, "boosting", 5000);
       })
@@ -169,27 +146,67 @@
     });
   }
 
-  function CancelContract(id: number) {
-    modals.show({
-      show: true,
-      onOk: () => {
-        fetchNui("boosting/cancel", {
-          id,
-        }).then(() => {
-          notifications.send("You just cancel your contract", "boosting", 1000);
-        });
-        startedContracts.set(null);
-      },
-      onCancel: () => {},
-      title: "Cancel Contract",
-      okText: "Confirm",
-      cancelText: "Cancel",
-      description:
-        "Are you sure you want to cancel this contract?, you will loose it...",
-    });
+  function Truncate(text: string) {
+    return text.length > 20 ? text.slice(0, 19) + "..." : text;
   }
+
+  function CancelContract(id: number) {
+    if (!$canCancel) {
+      return notifications.send(
+        "You can't cancel the contract",
+        "boosting",
+        3000
+      );
+    } else {
+      modals.show({
+        show: true,
+        onOk: () => {
+          fetchNui("boosting/cancel", {
+            id,
+          }).then((res) => {
+            if (res == "success") {
+              startedContracts.set(null);
+              notifications.send(
+                "You just cancel your contract",
+                "boosting",
+                1000
+              );
+            } else if (res == "failure") {
+              notifications.send(
+                "You can't cancel the contract",
+                "boosting",
+                3000
+              );
+            }
+          });
+        },
+        onCancel: () => {},
+        title: "Cancel Contract",
+        okText: "Confirm",
+        cancelText: "Cancel",
+        description:
+          "Are you sure you want to cancel this contract?, you will loose it...",
+      });
+    }
+  }
+
   onMount(() => {
-    DumyBoostingData();
+    fetchNui("boosting/getcontract").then((r) => {
+      contracts.set(r.contracts);
+    });
+    fetchNui("boosting/getqueue").then((data) => {
+      queue.set(data);
+    });
+
+    fetchNui("boosting/getrep").then((r) => {
+      let toarray: any = [];
+      for (let i in r.repconfig) {
+        toarray.push([i, r.repconfig[i]]);
+      }
+      repConfig = toarray;
+      repPoint = r.rep;
+      getRep();
+    });
   });
 </script>
 
@@ -250,15 +267,26 @@
               {$startedContracts.contract}
             </div>
             <div class="boost-name">{$startedContracts.owner}</div>
-            <div class="boost-car">{$startedContracts.carName}</div>
-
-            <div class="expires">
-              Expires: <b
-                >{moment($startedContracts.expire).endOf("hour").fromNow()}</b
+            <div class="boost-car">
+              {Truncate($startedContracts.carName)}
+            </div>
+            <div class="plate">
+              Plate: <b style="color: gold;"
+                >{$startedContracts.plate ?? "Ask JL"}</b
               >
             </div>
+            <div class="expires">
+              Expires: <b
+                >{moment($startedContracts.expire)
+                  .endOf("hour")
+                  .from(currentDate)}</b
+              >
+            </div>
+
             <div class="button started">
-              <button on:click={() => CancelContract($startedContracts.id)}
+              <button
+                disabled={!$canCancel}
+                on:click={() => CancelContract($startedContracts.id)}
                 >Cancel Contract</button
               >
             </div>
@@ -267,7 +295,9 @@
         {#each $contracts as contract (contract.id)}
           <div
             class="boosting-card"
-            animate:flip={{ easing: quadInOut, duration: 300 }}
+            animate:flip={{ easing: quadInOut, duration: 240 }}
+            in:scale|local={{ duration: 300, easing: quadOut }}
+            out:fade|local={{ duration: 200 }}
           >
             <div class="typeshit" class:vin={contract.type === "vinscratch"}>
               {contract.type === "boosting"
@@ -283,10 +313,12 @@
               {contract.contract}
             </div>
             <div class="boost-name">{contract.owner}</div>
-            <div class="boost-car">{contract.carName}</div>
+            <div class="boost-car">{Truncate(contract.carName)}</div>
             <div class="boost-reward">Buy In: <b>{contract.cost} GNE</b></div>
             <div class="expires">
-              Expires: <b>{moment(contract.expire).endOf("hour").fromNow()}</b>
+              Expires: <b
+                >{moment(contract.expire).endOf("hour").from(currentDate)}</b
+              >
             </div>
             <div class="button">
               <button

@@ -1,8 +1,8 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import { cubicInOut, cubicOut } from "svelte/easing";
-  import app from "../../main";
+  import { cubicInOut } from "svelte/easing";
   import { closeApp, openedApps } from "@store/desktop";
+  import { onMount } from "svelte";
 
   let moving = false;
   let left = 200;
@@ -15,7 +15,7 @@
   interface ITopData {
     title: string;
     color: string;
-    background?: string;
+    background?: string | any;
     blurstrength?: number;
     blur?: boolean;
   }
@@ -54,18 +54,27 @@
   }
 </script>
 
-<div
-  class="apps"
-  style="left: {left}px; top: {top}px"
-  in:fade|local={{ duration: 150, easing: cubicInOut }}
-  out:fade|local={{ duration: 100 }}
->
-  <div
-    class="actual-app"
-    style="background: {topdata.background ||
+<div class="apps" style="--left: {left}px; --top: {top}px">
+  <!-- 
+
+    "background: {topdata.background ||
       'rgba(50, 48, 60, 0.978)'}; {topdata.blur
       ? `backdrop-filter: blur(${topdata.blurstrength || 5}px);`
       : ''};"
+   -->
+  <div
+    class="app-container"
+    in:fade|local={{ duration: 150, easing: cubicInOut }}
+    out:fade|local={{ duration: 100 }}
+    style={typeof topdata.background === "string"
+      ? `background-color: ${
+          topdata.background || "rgba(50, 48, 60, 0.978)"
+        }; ${
+          topdata.blur
+            ? `backdrop-filter: blur(${topdata.blurstrength || 5}px);`
+            : ""
+        }`
+      : topdata.background.css}
   >
     <div
       class="top {moving ? 'ondrag' : ''}"
@@ -103,6 +112,8 @@
   .apps {
     border-radius: 5px;
     position: absolute;
+    left: var(--left);
+    top: var(--top);
     transform: translate(-50px, -50px);
     width: 80%;
     height: 80%;
@@ -113,13 +124,14 @@
   .ondrag {
     cursor: move;
   }
-  .actual-app {
+  .app-container {
+    transition: background 0.3s ease;
+    background-color: black;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* background: rgba(50, 48, 60, 0.978); */
   }
 
   .top {

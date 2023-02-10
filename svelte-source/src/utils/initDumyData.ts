@@ -53,6 +53,15 @@ export function InitDumyAppData() {
       isopen: false,
       useimage: false,
     },
+    {
+      name: "employment",
+      icon: "fas fa-users",
+      text: "Employment",
+      color: "#fff",
+      background: "#c26262",
+      isopen: false,
+      useimage: false
+    }
   ];
   setApp(data);
 }
@@ -102,14 +111,14 @@ export function DumyBoostingData() {
     },
   ];
   handleContracts(data);
-  startedContracts.set({
-    id: 9,
-    contract: "D",
-    carName: "Banshee",
-    expire: 1660578622000,
-    cost: 1000,
-    owner: "Lazzy",
-    type: "boosting",
-    vinscratch: false,
-  });
+  // startedContracts.set({
+  //   id: 9,
+  //   contract: "D",
+  //   carName: "Banshee",
+  //   expire: 1660578622000,
+  //   cost: 1000,
+  //   owner: "Lazzy",
+  //   type: "boosting",
+  //   vinscratch: false,
+  // });
 }

@@ -1,7 +1,13 @@
 import { onMount, onDestroy } from "svelte";
-import { handleContracts, started, startedContracts } from "@store/boosting";
+import {
+  canCancel,
+  handleContracts,
+  started,
+  startedContracts,
+} from "@store/boosting";
 import { toggleVisible } from "@store/desktop";
 import { notifications } from "@store/notifications";
+import { setCurrentDate } from "./misc";
 
 interface nuiMessage {
   data: {
@@ -42,10 +48,36 @@ export function handlerMessage() {
         break;
       case "receivecontracts":
         handleContracts(event.data?.contracts);
+        setCurrentDate(event.data?.serverdate);
         break;
       case "booting/delivered":
         startedContracts.set(null);
         notifications.send("You have completed the contact", "boosting", 5000);
+        break;
+      case "boosting/horseboosting":
+        console.log(event.data?.data.plate);
+        setTimeout(() => {
+          startedContracts.update((segs) => {
+            console.log(segs);
+            segs.plate = event.data?.data.plate;
+            return segs;
+          });
+        }, 500);
+        break;
+      case "custom-notif":
+        notifications.send(
+          event.data.data.text,
+          undefined,
+          event.data.data.length ?? 3000,
+          {
+            background: event.data.data.background,
+            icon: event.data.data.icon,
+            color: event.data.data.color,
+          }
+        );
+        break;
+      case "boosting/setcancel":
+        canCancel.set(event.data.data.status);
         break;
     }
   }
