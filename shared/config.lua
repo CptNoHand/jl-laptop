@@ -21,7 +21,7 @@ Config.Apps = {
         job = {},
         gang = {}, -- it can be boolean or a table {'ballas'}
         item = {},
-        default = true -- if true, it will be added by default
+        default = true, -- if true, it will be added by default
     },
     ['bennys'] = {
         app = 'bennys',
@@ -30,9 +30,9 @@ Config.Apps = {
         useimage = false,
         color = '#fff',
         background = "#352968",
-        job = {'redline'},
+        job = {'lsmotors'},
         gang = {},
         item = {},
-        default = true
+        default = true,
     },
 }

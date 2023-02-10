@@ -7,7 +7,7 @@ Config.Bennys.Location = {
     coords = vector4(1183.37, -3322.16, 6.03, 95.27),
     sprite = 473,
     colour = 28,
-    text = "Basti/s Werkstattbedarf"
+    text = "Basti/s Werkstattbedarf",
 }
 
 
@@ -40,168 +40,168 @@ Config.Bennys.Items = {
     },
     ["ducttape"] = {
         name = "ducttape",
-        price = 500,
+        price = 50,
         stock = 5,
         type = "bank",
         category = "Consumable Parts"
     },
     ["turbo"] = {
         name = "turbo",
-        price = 40000,
+        price = 25000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["car_armor"] = {
         name = "car_armor",
-        price = 60000,
+        price = 75000,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["nos"] = {
         name = "nos",
-        price = 45000,
+        price = 35000,
         stock = 250,
         type = "bank",
         category = "Performance Parts"
     },
     ["noscan"] = {
         name = "noscan",
-        price = 10000,
+        price = 2000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["noscolour"] = {
         name = "noscolour",
-        price = 55000,
+        price = 5000,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["engine1"] = {
         name = "engine1",
-        price = 15000,
+        price = 3500,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["engine2"] = {
         name = "engine2",
-        price = 22500,
+        price = 8000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["engine3"] = {
         name = "engine3",
-        price = 35000,
+        price = 12500,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["engine4"] = {
         name = "engine4",
-        price = 50000,
+        price = 20000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["engine5"] = {
         name = "engine5",
-        price = 60000,
+        price = 35000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["transmission1"] = {
         name = "transmission1",
-        price = 10000,
+        price = 3000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["transmission2"] = {
         name = "transmission2",
-        price = 15000,
+        price = 6000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["transmission3"] = {
         name = "transmission3",
-        price = 25000,
+        price = 9000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["transmission4"] = {
         name = "transmission4",
-        price = 40000,
+        price = 15000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["brakes1"] = {
         name = "brakes1",
-        price = 9000,
+        price = 2000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["brakes2"] = {
         name = "brakes2",
-        price = 17500,
+        price = 7000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["brakes3"] = {
         name = "brakes3",
-        price = 27500,
+        price = 12500,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
     },
     ["suspension1"] = {
         name = "suspension1",
-        price = 2000,
+        price = 750,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["suspension2"] = {
         name = "suspension2",
-        price = 2500,
+        price = 750,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["suspension3"] = {
         name = "suspension3",
-        price = 3000,
+        price = 750,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["suspension4"] = {
         name = "suspension4",
-        price = 3500,
+        price = 750,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["suspension5"] = {
         name = "suspension5",
-        price = 4000,
+        price = 750,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["bprooftires"] = {
         name = "bprooftires",
-        price = 225000,
+        price = 100000,
         stock = 5,
         type = "bank",
         category = "Performance Parts"
@@ -215,28 +215,28 @@ Config.Bennys.Items = {
     },
     ["underglow_controller"] = {
         name = "underglow_controller",
-        price = 50000,
+        price = 30000,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["headlights"] = {
         name = "headlights",
-        price = 1000,
+        price = 500,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["tint_supplies"] = {
         name = "tint_supplies",
-        price = 1000,
+        price = 500,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["customplate"] = {
         name = "customplate",
-        price = 500,
+        price = 250,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
@@ -250,21 +250,21 @@ Config.Bennys.Items = {
     },
     ["roof"] = {
         name = "roof",
-        price = 3000,
+        price = 1500,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["spoiler"] = {
         name = "spoiler",
-        price = 4000,
+        price = 2000,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["bumper"] = {
         name = "bumper",
-        price = 2500,
+        price = 1500,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
@@ -278,7 +278,7 @@ Config.Bennys.Items = {
     },
     ["exhaust"] = {
         name = "exhaust",
-        price = 2500,
+        price = 1500,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
@@ -292,21 +292,21 @@ Config.Bennys.Items = {
     },
     ["rollcage"] = {
         name = "rollcage",
-        price = 2500,
+        price = 2000,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["rims"] = {
         name = "rims",
-        price = 3000,
+        price = 2000,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["livery"] = {
         name = "livery",
-        price = 1000,
+        price = 1500,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
@@ -320,99 +320,127 @@ Config.Bennys.Items = {
     },
     ["tires"] = {
         name = "tires",
-        price = 3000,
+        price = 750,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["horn"] = {
         name = "horn",
-        price = 500,
+        price = 100,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["internals"] = {
         name = "internals",
-        price = 1000,
+        price = 100,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["externals"] = {
         name = "externals",
-        price = 1000,
+        price = 100,
         stock = 5,
         type = "bank",
         category = "Cosmetic Parts"
     },
     ["steel"] = {
         name = "steel",
-        price = 50,
+        price = 25,
         stock = 50,
         type = "bank",
         category = "Consumable Parts"
     },
     ["iron"] = {
         name = "iron",
-        price = 50,
+        price = 25,
         stock = 50,
         type = "bank",
         category = "Consumable Parts"
     },
     ["plastic"] = {
         name = "plastic",
-        price = 50,
+        price = 25,
         stock = 50,
         type = "bank",
         category = "Consumable Parts"
     },
-    --[[["rubber"] = {
-        name = "rubber",
-        price = 50,
-        stock = 50,
-        type = "bank",
-        category = "Consumable Parts"
-    },]]--
-    ["sparkplug"] = {
-        name = "sparkplug",
-        price = 100,
+    ["sparkplugs"] = {
+        name = "sparkplugs",
+        price = 25,
         stock = 10,
         type = "bank",
         category = "Consumable Parts"
     },
     ["newoil"] = {
         name = "newoil",
-        price = 50,
+        price = 25,
         stock = 50,
         type = "bank",
         category = "Consumable Parts"
     },
     ["carbattery"] = {
         name = "carbattery",
-        price = 550,
+        price = 100,
         stock = 50,
         type = "bank",
         category = "Consumable Parts"
     },
     ["axleparts"] = {
         name = "axleparts",
-        price = 100,
+        price = 50,
         stock = 50,
         type = "bank",
         category = "Consumable Parts"
     },
     ["sparetire"] = {
         name = "sparetire",
-        price = 450,
+        price = 50,
         stock = 50,
         type = "bank",
         category = "Consumable Parts"
     },
-    ["carradio"] = {
-        name = "carradio",
-        price = 50,
+    ["pd_screwdriver"] = {
+        name = "pd_screwdriver",
+        price = 25,
         stock = 50,
+        type = "bank",
+        category = "Consumable Parts"
+    },
+    ["pd_jammer"] = {
+        name = "pd_jammer",
+        price = 50000,
+        stock = 10,
+        type = "bank",
+        category = "Consumable Parts"
+    },
+    ["pd_scanner"] = {
+        name = "pd_scanner",
+        price = 10000,
+        stock = 10,
+        type = "bank",
+        category = "Consumable Parts"
+    },
+    ["kq_regulartire"] = {
+        name = "kq_regulartire",
+        price = 50,
+        stock = 4,
+        type = "bank",
+        category = "Performance Parts"
+    },
+    ["kq_drifttire"] = {
+        name = "kq_drifttire",
+        price = 50,
+        stock = 4,
+        type = "bank",
+        category = "Performance Parts"
+    },
+    ["kq_carjack"] = {
+        name = "kq_carjack",
+        price = 100,
+        stock = 10,
         type = "bank",
         category = "Consumable Parts"
     },

@@ -20,8 +20,8 @@ end)
 local function openStash()
     local CID = QBCore.Functions.GetPlayerData().citizenid
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "BennyShop_" .. CID, {
-        maxweight = 100000,
-        slots = 25,
+        maxweight = 500000,
+        slots = 50,
     })
     TriggerEvent("inventory:client:SetCurrentStash", "BennyShop_" .. CID)
 end
