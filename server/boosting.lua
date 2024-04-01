@@ -41,24 +41,132 @@ local LookingForContracts = {}
 
 
 local function Notify(src, text, type, time)
-    if Config.Boosting.Notifications == "phone" then
-        TriggerClientEvent('qb-phone:client:CustomNotification', src,
-            Lang:t('boosting.info.phonenotify'),
-            text,
-            "fas fa-user-secret",
-            "#00008B",
-            time
-        )
-    elseif Config.Boosting.Notifications == "npwd" then
-        TriggerEvent('qb-phone:server:sendNewMail', {
-            sender = Lang:t('boosting.info.phonenotify'),
-            subject = 'Boosting',
-            message = text,
-            button = {}
-        })
-    else
-        QBCore.Functions.Notify(src, text, type, time)
-    end
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.info.phonenotify'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.info.tracker_backon'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.info.bought_boost'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.info.rewardboost'),
+        text = text,
+        icon = "./img/apps/mail.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.success.tracker_off'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.success.youllbepaid'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.success.gps_dropoff'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.success.received_reward'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.success.disable_tracker'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.success.vin_dropoff'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.error.disable_fail'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.error.no_tracker'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.error.get_away'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.error.cancelboost'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.blip.dropoff'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(src, text, type, time)
+    TriggerClientEvent('qs-smartphone:client:notify', src, {
+        title = Lang:t('boosting.blip.vinscratch'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
 end
 
 -- ** EVERYTHING TO DO WITH DROP OFFS AND VINSCRATCH ** --
@@ -170,7 +278,7 @@ local function SpawnCar(src)
         if currentRuns[CID].type == "vinscratch" then
             Entity(car).state.isvinCar = true
         end
-        if GetResourceState('ox_fuel') == "started" then
+        if GetResourceState('LegacyFuel') == "started" then
             Entity(car).state.fuel = 100.0
         else
             TriggerClientEvent('jl-laptop:client:setvehicleFuel', src, car)
@@ -214,7 +322,7 @@ QBCore.Functions.CreateCallback('jl-laptop:server:CanStartBoosting', function(so
 
     if currentRuns[CID] then return cb("running") end
     if not currentContracts[CID][id] then return cb("notfound") end
-    if Config.RenewedPhone and not exports['qb-phone']:hasEnough(src, "gne", currentContracts[CID][id].cost) then
+    if Config.RenewedPhone and not exports['qs-crypto']:hasEnough(src, "btc", currentContracts[CID][id].cost) then
         return cb("notenough")
     elseif not Config.RenewedPhone and Player.PlayerData.money.crypto < currentContracts[CID][id].cost then
         return cb("notenough")
@@ -245,7 +353,7 @@ QBCore.Functions.CreateCallback('jl-laptop:server:CanStartBoosting', function(so
         if SpawnCar(src) then
 
             if Config.RenewedPhone then
-                exports['qb-phone']:RemoveCrypto(src, "gne", currentContracts[CID][id].cost)
+                exports['qs-crypto']:RemoveCrypto(src, "btc", currentContracts[CID][id].cost)
             else
                 if not
                     Player.Functions.RemoveMoney("crypto", currentContracts[CID][id].cost,
@@ -494,11 +602,11 @@ RegisterNetEvent('jl-laptop:server:finishBoost', function(netId, isvin)
     Player.Functions.SetMetaData('carboostrep', boostData)
     if not isvin then
         if currentRuns[CID].cost == 0 then
-            currentRuns[CID].cost = math.random(1, 2) -- makes it so they can actually get GNE when the boost is Free
+            currentRuns[CID].cost = math.random(1, 2) -- makes it so they can actually get btc when the boost is Free
         end
         local reward = math.ceil(currentRuns[CID].cost * math.random(2, 3))
         if Config.RenewedPhone then
-            exports['qb-phone']:AddCrypto(src, "gne", reward)
+            exports['qs-crypto']:AddCrypto(src, "btc", reward)
         else
             Player.Functions.AddMoney("crypto", reward, Lang:t('boosting.info.rewardboost'))
         end

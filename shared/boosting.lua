@@ -1,12 +1,12 @@
 Config.Boosting = {}
 
-Config.Boosting.MinCops = 0
+Config.Boosting.MinCops = 2
 
-Config.Boosting.Notifications = "phone" -- Use this for qb // renewed phone intergration, use "notify" for normal QBCore Notifications // NWPD for New Phone Who Dis
+--Config.Boosting.Notifications = "qb" -- Use this for qb // renewed phone intergration, use "notify" for normal QBCore Notifications // NWPD for New Phone Who Dis
 
 Config.Boosting.Debug = true -- Make this true to make boosting faster lmao
 
-Config.Boosting.HackingDevice = "phone" -- Whatever item you use to hack a car with
+Config.Boosting.HackingDevice = "disruptor" -- Whatever item you use to hack a car with
 
 Config.Boosting.HackDelayMin = 30 -- Seconds
 Config.Boosting.HackDelayMax = 60 -- Seconds

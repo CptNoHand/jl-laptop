@@ -25,6 +25,13 @@ Config.Bennys.Items = {
         type = "bank",
         category = "Consumable Parts"
     },
+    ["cleaningkit"] = {
+        name = "cleaningkit",
+        price = 200,
+        stock = 5,
+        type = "bank",
+        category = "Consumable Parts"
+    },
     ["mechanic_tools"] = {
         name = "mechanic_tools",
         price = 2500,

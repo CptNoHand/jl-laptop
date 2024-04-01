@@ -9,7 +9,7 @@ Config.Linux = false
 
 Config.PoliceJobs = {
     "police",
-    "bcso"
+    "detectives"
 }
 
 Config.Apps = {
@@ -46,7 +46,7 @@ Config.Apps = {
         useimage = false,
         color = '#fff',
         background = "#352968",
-        job = {},
+        job = { "bennystuners", "midnightnation", "lsmotors", "lscustoms", "redline" },
         bannedJobs = {},
         gang = {},
         item = {},

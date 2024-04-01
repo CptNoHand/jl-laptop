@@ -16,24 +16,132 @@ local currentCops = 0
 ---- Notify functions ----
 
 local function Notify(text, type, time)
-    if Config.Boosting.Notifications == "phone" then
-        TriggerEvent('qb-phone:client:CustomNotification',
-            Lang:t('boosting.info.phonenotify'),
-            text,
-            "fas fa-user-secret",
-            "#00008B",
-            time
-        )
-    elseif Config.Boosting.Notifications == "npwd" then
-        TriggerServerEvent('qb-phone:server:sendNewMail', {
-            sender = Lang:t('boosting.info.phonenotify'),
-            subject = 'Boosting',
-            message = text,
-            button = {}
-        })
-    else
-        QBCore.Functions.Notify(text, type, time)
-    end
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.info.phonenotify'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.info.tracker_backon'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.info.bought_boost'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.info.rewardboost'),
+        text = text,
+        icon = "./img/apps/mail.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.success.tracker_off'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.success.youllbepaid'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.success.gps_dropoff'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.success.received_reward'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.success.disable_tracker'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.success.vin_dropoff'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.error.disable_fail'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.error.no_tracker'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.error.get_away'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.error.cancelboost'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.blip.dropoff'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
+end
+local function Notify(text, type, time)
+    TriggerEvent('qs-smartphone:client:notify', {
+        title = Lang:t('boosting.blip.vinscratch'),
+        text = text,
+        icon = "./img/apps/darkweb.png",
+        timeout = time
+    })
 end
 
 -- ALL THE BLIP FUNCTIONS --
