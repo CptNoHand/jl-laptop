@@ -9,7 +9,8 @@ Config.Linux = true
 
 Config.PoliceJobs = {
     "police",
-    "detectives"
+    "detectives",
+    "sheriff"
 }
 
 Config.Apps = {
